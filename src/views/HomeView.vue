@@ -86,7 +86,7 @@ function handleFile(event) {
         <button @click.prevent="submitForm">{{ submitButton }}</button>
       </div>
     </form>
-    <img src="img.png" />
+    <img src="/img.png" />
   </div>
 </template>
 
