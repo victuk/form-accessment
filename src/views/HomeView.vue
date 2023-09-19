@@ -133,6 +133,7 @@ label,
 .label {
   display: inline-block;
   margin-bottom: 5px;
+  font-size: 16px;
 }
 
 .submit-button-wrapper {
@@ -187,6 +188,7 @@ input:focus {
 .swap {
   font-weight: 300!important;
   margin-bottom: 20px;
+  font-size: 16px;
 }
 
 @media screen and (min-width: 425px) and (max-width: 768px) {
