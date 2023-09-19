@@ -2,6 +2,8 @@
 // import TheWelcome from '../components/TheWelcome.vue'
 import { ref } from 'vue'
 import axios from 'axios'
+import '/img.png'
+import '/upload.png'
 
 let submitButton = ref("Submit");
 
