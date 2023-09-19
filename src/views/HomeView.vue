@@ -1,6 +1,7 @@
 <script setup>
 // import TheWelcome from '../components/TheWelcome.vue'
 import { ref } from 'vue'
+import router from "../router/index"
 import axios from 'axios'
 import '/public/img.png'
 import '/public/upload.png'
@@ -18,16 +19,21 @@ async function submitForm() {
 
   try {
     submitButton.value = "Submitting... Please wait";
-    const form = new FormData();
+    let form = new FormData();
 
-  form.append(fullname, fullname.value);
-  form.append(phone, phone.value);
-  form.append(email, email.value);
-  form.append(address, address.value);
-  form.append(laptop, laptop.value);
-  form.append(receipt, receipt.value);
+  if(!fullname.value ||
+    !phone.value ||
+    !email.value ||
+    !address.value ||
+    !laptop.value) {
+    alert("Incomplete input");
+    return;
+  }
+  form.append("receipt", receipt.value);
 
-  const response = await axios.post("https://testbackend-ya01.onrender.com/api/v1/users/register", form, {
+  console.log(fullname.value);
+
+  const response = await axios.post(`https://testbackend-ya01.onrender.com/api/v1/users/register?fullname=${fullname.value}&phone=${phone.value}&email=${email.value}&address=${address.value}&laptop=${laptop.value}`, form, {
     headers: {
       "Content-Type": "multipart/form-data"
     }
@@ -35,6 +41,7 @@ async function submitForm() {
 
   if(response.status == 201) {
     alert("Submitted Successfully!");
+    router.go();
   }
   } catch (error) {
     console.log(error);
